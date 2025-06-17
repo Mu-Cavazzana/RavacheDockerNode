@@ -1,23 +1,22 @@
-name: Deploy app node com github actions
+nome: Deploy app node github actions 
 
 on:
   push:
-    brnaches:
-      - main
+    -main
 
 jobs: 
   build-and-deploy:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar o repositório
+    - name: Clonar o repositória
       uses: actions/checkout@v3
 
-    - name: Configurar Docker Buildx
-      uses: docker/setup-buildx-action@v3
+    - name: configurar Docker Buildx
+      uses: docker/setup-buildx-action@v3 
 
     - name: Build da imagem Docker
-      uses: docker build -t hello-word-node .
+      run: docker build -t hello-word-node .
 
-    - name: Finalizar
-      uses: echo "Build concluído. Render detectará o push e fará o deploy automaticamente"
+    - name: Finalizar 
+      run: echo "Build concluido. Render detectará o push e fará o deploy automaticamente."
